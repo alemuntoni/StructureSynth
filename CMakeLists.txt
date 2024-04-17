@@ -114,7 +114,11 @@ target_link_libraries(structure-synth PUBLIC
 	Qt5::Core Qt5::Xml Qt5::OpenGL OpenGL::GLU)
 
 target_include_directories(structure-synth SYSTEM PUBLIC
-	"${CMAKE_CURRENT_LIST_DIR}")
+	$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}>
+	$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>)
 
 set_property(TARGET structure-synth
 	PROPERTY AUTOMOC TRUE)
+
+install(TARGETS structure-synth)
+install(FILES ${HEADERS} TYPE INCLUDE)
