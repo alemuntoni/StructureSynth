@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.13)
 project(StructureSynth)
 
+option(BUILD_SHARED_LIBS "Build shared libraries" OFF)
 ### Dependencies
 message(STATUS "Searching for required components")
 find_package(OpenGL REQUIRED)
@@ -106,7 +107,7 @@ set(SOURCES
 	StructureSynth/Model/Rendering/TemplateRenderer.cpp
 )
 
-add_library(structure-synth STATIC
+add_library(structure-synth
 	${SOURCES} ${HEADERS})
 
 target_link_libraries(structure-synth PUBLIC
